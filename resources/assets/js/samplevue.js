@@ -29,6 +29,7 @@ new Vue({
             // this.itemsのthis.Index番目から1つ目をthis.textに変更する
             this.items.splice(this.editIndex, 1, this.text);
         }
+        // 最後に編集状態を解除
         this.cancel();
     },
 
