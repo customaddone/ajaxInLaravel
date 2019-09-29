@@ -16,8 +16,15 @@
               </div>
           </div>
       </form>
+      <!--ループ処理-->
       <ul class="list-group">
-          <li class="list-group-item" v-for="todo in todos">@{{ todo }}</li>
+          <li class="list-group-item" v-for="todo in todos">@{{ todo }}
+              <span class="pull-right">
+                  <button class="btn btn-xs btn-warning" v-on:click="deleteItem(todo)">
+                      削除
+                  </button>
+              </span>
+          </li>
       </ul>
   </div>
   <!-- ４　npm run devでソースをコンパイルする
