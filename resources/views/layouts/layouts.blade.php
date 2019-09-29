@@ -8,8 +8,17 @@
 <!-- テンプレート用 -->
 <body>
   <div id="app">
-      <!-- `greet` は、あらかじめ定義したメソッドの名前 -->
-      <button v-on:click="greet">Greet</button>
+      <form v-on:submit.prevent="addItem" class="form-group">
+          <div class="form-group">
+              <div class="input-group">
+                  <input type="text" v-model="newItem" class="form-control">
+                  <span class="input-group-btn"><button class="btn btn-primary" type="submit">送信</button></span>
+              </div>
+          </div>
+      </form>
+      <ul class="list-group">
+          <li class="list-group-item" v-for="todo in todos">@{{ todo }}</li>
+      </ul>
   </div>
   <!-- ４　npm run devでソースをコンパイルする
        ５  view内でasset('/js/()')でassetを読み込む -->
