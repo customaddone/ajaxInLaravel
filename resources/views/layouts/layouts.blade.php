@@ -1,61 +1,51 @@
-<html>
-<head>
-  <title>RailsTutorial</title>
-  <!-- Vueのインストールを行う -->
-  <script src="https://unpkg.com/vue@2.5.17"></script>
-  <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-</head>
-<!-- テンプレート用 -->
-<body>
-  <div id="app">
-      <!-- 入力フォーム -->
-      <form v-on:submit.prevent="addItem" class="form-group">
-          <div class="form-group">
+<!doctype html>
+  <html lang="{{ app()->getLocale() }}">
+    <head>
+      <meta charset="utf-8">
+      <meta name="csrf-token" content="{{ csrf_token() }}"> <!-- ←① -->
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="{{ asset('css/app.css') }}"> <!-- ←② -->
+      <title>Laravel-Vue-todo</title>
+    </head>
+    <body>
+      <div id="app"> <!-- ←③ -->
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12">
+              <br>
+            </div>
+            <div class="col-xs-6">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>タスク名</th>
+                    <th>完了ボタン</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="todo in todos" v-bind:key="todo.id">  <!-- ←v-forを使ってtodosを表示 -->
+                    <td>@{{ todo.id }}</td>  <!-- ←todoのIDを表示。@を忘れず！ -->
+                    <td>@{{ todo.title }}</td>  <!-- ←todoのtitleを表示。@を忘れず！ -->
+                    <td><button class="btn btn-primary">完了</button></td>
+                  </tr>  <!-- ←完了処理はまた後で設定します。 -->
+                </tbody>
+              </table>
+            </div>
+            <div class="col-xs-6">
               <div class="input-group">
-                  <!-- v-modelでテキストの値を操作 -->
-                  <input type="text" v-model="text" v-on:keyup.enter="changeItems" ref="editor" class="form-control">
-                  <!-- setItemで追加 {{changeButtonText}}は入力の内容により変わる -->
-                  <span class="input-group-btn"><button v-on:click="setItems" class="btn btn-primary" type="submit">@{{changeButtonText}}</button></span>
+                <input type="text" class="form-control" placeholder="タスクを入力してください">
+                <span class="input-group-btn">
+                  <button class="btn btn-success" type="button">
+                      タスクを登録
+                  </button>
+                </span>
               </div>
+            </div>
           </div>
-      </form>
-
-      <hr>
-
-      <!--ループ処理-->
-      <ul class="list-group">
-          <!-- キーで指定したインデックスがVueに送られ、editIndexの値になる -->
-          <li class="list-group-item" v-for="(item, index) in items" v-bind:key="index">
-              @{{ item }}
-              <span class="pull-right">
-                  <!-- edit,remove両方でインデックスを渡す -->
-                  <button class="btn btn-xs btn-info" v-on:click="edit(index)">
-                　     編集
-            　    </button>
-
-            　    <button class="btn btn-xs btn-warning" v-on:click="remove(index)">
-            　         削除
-            　    </button>
-            　</span>
-        　　</li>
-        </ul>
-    </div>
-  <!-- ４　npm run devでソースをコンパイルする
-       ５  view内でasset('/js/()')でassetを読み込む -->
-  <script src="{{ asset('/js/samplevue.js') }}"></script>
-  <div class="container">
-    <header>
-      @yield('header')
-    </header>
-    <main>
-      @yield('main')
-    </main>
-    <aside class="sidebar">
-      @yield('sidebar')
-    </aside>
-    <footer>
-      @yield('footer')
-    </footer>
-  </div>
-</body>
+        </div>
+      </div>
+      <script src="{{ asset('js/app.js') }}"></script> <!-- ←④ -->
+    </body>
 </html>

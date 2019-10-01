@@ -22,12 +22,14 @@ new Vue({
     // 送信ボタンをクリックしたら以下を実行
     setItems() {
         if(this.editIndex === -1) {
-            // 配列に要素を追加
+            // 配列に要素を追加 一番後ろに追加
             this.items.push(this.text);
         } else {
             // 編集（指定位置から指定した要素数を削除し新しい要素に入れ替え）
+            // this.itemsのthis.Index番目から1つ目をthis.textに変更する
             this.items.splice(this.editIndex, 1, this.text);
         }
+        // 最後に編集状態を解除
         this.cancel();
     },
 

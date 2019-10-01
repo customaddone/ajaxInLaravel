@@ -16,6 +16,6 @@ Route::get('/', function () {
 });
 
 
-Route::get('/hello', function () {
-    return view('layouts.layouts');
-});
+Route::get('/{app}', function () {  //←追記
+  return view('layouts.layouts');
+})->where('app', '.*');
