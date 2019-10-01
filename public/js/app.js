@@ -992,6 +992,8 @@ window.Vue = __webpack_require__(35);
 var app = new Vue({
   el: '#app',
   data: {
+    // new_todo(ビューから送られるデータの入れ物)追加
+    new_todo: "",
     todos: [] //←TODOを格納するための配列を用意
   },
   methods: {
@@ -999,8 +1001,32 @@ var app = new Vue({
       var _this = this;
 
       //←axios.getでTODOリストを取得しています
+      // thenはgetが成功した場合 resを引数にとったコールバック変数を実行できる
       axios.get('/api/get').then(function (res) {
+        // res.dataがレスポンス
         _this.todos = res.data; //←取得したTODOリストをtodosに格納
+      });
+    },
+    addTodo: function addTodo() {
+      var _this2 = this;
+
+      axios.post('/api/add', {
+        // this.new_todoをtitleに格納して送ってみる
+        title: this.new_todo
+      }).then(function (res) {
+        _this2.todos = res.data;
+        _this2.new_todo = "";
+      });
+    },
+    // ビューでdeleteTodoの引数として指定したtodo.idがtask_idの中に入る
+    deleteTodo: function deleteTodo(task_id) {
+      var _this3 = this;
+
+      axios.post('/api/del', {
+        // 引数はtask_idを指定している
+        id: task_id
+      }).then(function (res) {
+        _this3.todos = res.data;
       });
     }
   },

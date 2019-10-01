@@ -28,20 +28,19 @@
                   <tr v-for="todo in todos" v-bind:key="todo.id">  <!-- ←v-forを使ってtodosを表示 -->
                     <td>@{{ todo.id }}</td>  <!-- ←todoのIDを表示。@を忘れず！ -->
                     <td>@{{ todo.title }}</td>  <!-- ←todoのtitleを表示。@を忘れず！ -->
-                    <td><button class="btn btn-primary">完了</button></td>
+                    <td><button class="btn btn-primary" v-on:click=
+                        "deleteTodo(todo.id)">完了</button></td>
                   </tr>  <!-- ←完了処理はまた後で設定します。 -->
                 </tbody>
               </table>
             </div>
             <div class="col-xs-6">
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="タスクを入力してください">
-                <span class="input-group-btn">
-                  <button class="btn btn-success" type="button">
-                      タスクを登録
-                  </button>
-                </span>
-              </div>
+            　<div class="input-group">
+    　　　　　　　<input type="text" class="form-control" placeholder="タスクを入力してください" v-model="new_todo"> <!-- ←v-modelを追記 -->
+    　　　　　　　<span class="input-group-btn">
+     　　　　　　　　<button class="btn btn-success" type="button" v-on:click="addTodo">タスクを登録する</button> <!-- ←v-on:clickを追記 -->
+    　　　　　　　</span>
+  　　　　　　　</div>
             </div>
           </div>
         </div>
