@@ -4,7 +4,7 @@
     <h1>Listing users</h1>
         @foreach ( $items as $item )
             <tr>
-                <td>{{ $item->texts }}</td>
+                <td>{!! $item->mark_body !!}</td>
                 <td><a href="/texts/{{ $item->id }}" style="display: inline-block;">
                     Show</a></td>
                 <td><a href="/texts/{{ $item->id}}/edit" style="display: inline-block;">
