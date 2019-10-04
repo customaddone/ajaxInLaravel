@@ -23,3 +23,5 @@ Route::get('/hello', function () {  //←追記
 Route::get('/home', function () {  //←追記
   return view('editors.home');
 });
+
+Route::resource('texts', 'TextsController');

@@ -1,50 +1,43 @@
-<!doctype html>
-  <html lang="{{ app()->getLocale() }}">
-    <head>
-      <meta charset="utf-8">
-      <meta name="csrf-token" content="{{ csrf_token() }}"> <!-- ←① -->
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" href="{{ asset('css/app.css') }}"> <!-- ←② -->
-      <title>Laravel-Vue-todo</title>
-    </head>
-    <body>
-      <div id="app"> <!-- ←③ -->
-        <div class="container">
-          <div class="row">
-            <div class="col-xs-12">
-              <br>
-            </div>
-            <div class="col-xs-6">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>タスク名</th>
-                    <th>完了ボタン</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr v-for="todo in todos" v-bind:key="todo.id">  <!-- ←v-forを使ってtodosを表示 -->
-                    <td>@{{ todo.id }}</td>  <!-- ←todoのIDを表示。@を忘れず！ -->
-                    <td>@{{ todo.title }}</td>  <!-- ←todoのtitleを表示。@を忘れず！ -->
-                    <td><button class="btn btn-primary" v-on:click=
-                        "deleteTodo(todo.id)">完了</button></td>
-                  </tr>  <!-- ←完了処理はまた後で設定します。 -->
-                </tbody>
-              </table>
-            </div>
-            <div class="col-xs-6">
-            　<div class="input-group">
-    　　　　　　　<textarea rows="4" cols="40"class="form-control" placeholder="タスクを入力してください" v-model="new_todo"></textarea> <!-- ←v-modelを追記 -->
-    　　　　　　　<span class="input-group-btn">
-     　　　　　　　　<button class="btn btn-success" type="button" v-on:click="addTodo">タスクを登録する</button> <!-- ←v-on:clickを追記 -->
-    　　　　　　　</span>
-  　　　　　　　</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <script src="{{ asset('js/app.js') }}"></script> <!-- ←④ -->
-    </body>
+<html>
+<head>
+  <title>RailsTutorial</title>
+  <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+  <!-- jQuery UIKit使う時にJQuery必要 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- UI Kit -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.5/css/uikit.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.5/js/uikit.min.js"></script>
+
+  <!-- Codemirror and marked dependencies -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.38.0/codemirror.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.38.0/codemirror.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.38.0/mode/markdown/markdown.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.38.0/addon/mode/overlay.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.38.0/mode/xml/xml.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.38.0/mode/gfm/gfm.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.js'></script>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <!-- HTML editor CSS and JavaScript -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.5/css/components/htmleditor.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.5/js/components/htmleditor.js"></script>
+</head>
+<!-- テンプレート用 -->
+<body>
+  <div class="container">
+    <header>
+      @yield('header')
+    </header>
+    <main>
+      @yield('main')
+    </main>
+    <aside class="sidebar">
+      @yield('sidebar')
+    </aside>
+    <footer>
+      @yield('footer')
+    </footer>
+  </div>
+</body>
 </html>
