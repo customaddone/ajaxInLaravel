@@ -36,7 +36,7 @@
             </div>
             <div class="col-xs-6">
             　<div class="input-group">
-    　　　　　　　<input type="text" class="form-control" placeholder="タスクを入力してください" v-model="new_todo"> <!-- ←v-modelを追記 -->
+    　　　　　　　<textarea rows="4" cols="40"class="form-control" placeholder="タスクを入力してください" v-model="new_todo"></textarea> <!-- ←v-modelを追記 -->
     　　　　　　　<span class="input-group-btn">
      　　　　　　　　<button class="btn btn-success" type="button" v-on:click="addTodo">タスクを登録する</button> <!-- ←v-on:clickを追記 -->
     　　　　　　　</span>

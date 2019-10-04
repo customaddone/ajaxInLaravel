@@ -16,6 +16,10 @@ Route::get('/', function () {
 });
 
 
-Route::get('/{app}', function () {  //←追記
+Route::get('/hello', function () {  //←追記
   return view('layouts.layouts');
-})->where('app', '.*');
+});
+
+Route::get('/home', function () {  //←追記
+  return view('editors.home');
+});

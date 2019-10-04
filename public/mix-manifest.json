@@ -1,5 +1,8 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
-    "/js/samplevue.js": "/js/samplevue.js"
+    "/js/samplevue.js": "/js/samplevue.js",
+    "/js/examplevue.js": "/js/examplevue.js",
+    "/js/codemirror.js": "/js/codemirror.js",
+    "/js/javascript.js": "/js/javascript.js"
 }
